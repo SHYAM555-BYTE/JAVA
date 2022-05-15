@@ -1,25 +1,23 @@
-import java.util.Arrays;
-
 public class linearsearch {
     public static void main(String[] args) {
-       int [] arr = {24,45,56,78};
-       arr = reverse(arr);
-       System.out.println(Arrays.toString(arr));
+        int [] arr={3,6,89,90};
+        int x = linearsearch(arr,89);
+        System.out.println(x);
     }
-    static int [] reverse(int [] arr) {
-            int start=0;
-            int end=arr.length-1;
-            while(start < end){
-                swap(arr, start, end);
-                start++;
-                end--;
+    // search in the array
+    static int linearsearch(int [] arr, int target){
+        int f=-1;
+        for(int s=0; s<arr.length; s++){
+            if(arr[s]==target){
+                f=s;
             }
-            return arr;
+        }
+        if(f!=-1) {
+            return f;
+        }
+        else{
+            return -1;
+        }
     }
-    static void swap(int [] arr, int a, int b){
-        int t;
-        t=arr[a];
-        arr[a]=arr[b];
-        arr[b]=t;
-    }
+
 }
