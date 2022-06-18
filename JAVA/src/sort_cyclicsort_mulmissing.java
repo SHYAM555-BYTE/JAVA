@@ -5,15 +5,21 @@ import java.util.List;
 
 public class sort_cyclicsort_mulmissing {
     public static void main(String[] args) {
-        int [] arr = {0,1,2,3,3,3,5,6,6,7,9};
-        System.out.print(missing(arr));
+        int [] arr = {0,1,2,-1,3,3,3,5,6,6,7,9};
+        System.out.print("List of all missing numbers"+missing(arr));
     }
     public static List<Integer> missing(int[]arr){
             int i=0;
             while(i<arr.length){
+                if(arr[i]>0)
+                {
                 int correct = arr[i];
-                if(arr[i]!=arr[correct] && arr[i]<arr.length){
+                if(arr[i]!=arr[correct] && arr[i]<=arr.length && arr[i]>0){
                     swap(arr , i , correct);
+                }
+                else{
+                    i++;
+                }
                 }
                 else{
                     i++;
@@ -24,7 +30,7 @@ public class sort_cyclicsort_mulmissing {
             for(int x=0; x<arr.length;x++){
                 if(arr[x]!=x){
                     ans.add(x);
-                    if(repeated.contains(arr[x])){
+                    if(repeated.contains(arr[x]) || arr[x]<0){
 
                     }
                     else {
@@ -32,8 +38,8 @@ public class sort_cyclicsort_mulmissing {
                     }
                 }
             }
-            System.out.println(Collections.min(repeated));
-            System.out.println(repeated);
+            System.out.println("Smallest positive missing number "+Collections.min(ans));
+            System.out.println("List of all repeated numbers"+repeated);
             return ans;
     }
     public static void swap(int[]arr , int i , int j){
