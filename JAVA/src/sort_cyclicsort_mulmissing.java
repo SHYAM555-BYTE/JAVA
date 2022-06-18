@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class sort_cyclicsort_mulmissing {
     public static void main(String[] args) {
-        int [] arr = {0,1,2,3,3,5,6,6,7,9};
+        int [] arr = {0,1,2,3,3,3,5,6,6,7,9};
         System.out.print(missing(arr));
     }
     public static List<Integer> missing(int[]arr){
@@ -19,11 +20,20 @@ public class sort_cyclicsort_mulmissing {
                 }
             }
             List<Integer> ans = new ArrayList<>();
+            List<Integer> repeated = new ArrayList<>();
             for(int x=0; x<arr.length;x++){
                 if(arr[x]!=x){
                     ans.add(x);
+                    if(repeated.contains(arr[x])){
+
+                    }
+                    else {
+                        repeated.add(arr[x]);
+                    }
                 }
             }
+            System.out.println(Collections.min(repeated));
+            System.out.println(repeated);
             return ans;
     }
     public static void swap(int[]arr , int i , int j){
